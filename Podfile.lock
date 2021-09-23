@@ -1,0 +1,80 @@
+PODS:
+  - Alamofire (5.4.3)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
+  - KakaoSDK (2.7.1):
+    - KakaoSDKAuth (= 2.7.1)
+    - KakaoSDKCommon (= 2.7.1)
+    - KakaoSDKLink (= 2.7.1)
+    - KakaoSDKNavi (= 2.7.1)
+    - KakaoSDKStory (= 2.7.1)
+    - KakaoSDKTalk (= 2.7.1)
+    - KakaoSDKTemplate (= 2.7.1)
+    - KakaoSDKUser (= 2.7.1)
+  - KakaoSDKAuth (2.7.1):
+    - KakaoSDKCommon (= 2.7.1)
+  - KakaoSDKCommon (2.7.1):
+    - KakaoSDKCommon/Common (= 2.7.1)
+    - KakaoSDKCommon/Network (= 2.7.1)
+  - KakaoSDKCommon/Common (2.7.1)
+  - KakaoSDKCommon/Network (2.7.1):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.7.1)
+  - KakaoSDKLink (2.7.1):
+    - KakaoSDKCommon (= 2.7.1)
+    - KakaoSDKTemplate (= 2.7.1)
+  - KakaoSDKNavi (2.7.1):
+    - KakaoSDKCommon/Common (= 2.7.1)
+  - KakaoSDKStory (2.7.1):
+    - KakaoSDKUser (= 2.7.1)
+  - KakaoSDKTalk (2.7.1):
+    - KakaoSDKTemplate (= 2.7.1)
+    - KakaoSDKUser (= 2.7.1)
+  - KakaoSDKTemplate (2.7.1):
+    - KakaoSDKCommon/Common (= 2.7.1)
+  - KakaoSDKUser (2.7.1):
+    - KakaoSDKAuth (= 2.7.1)
+  - SnapKit (5.0.1)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.4)
+  - AlamofireImage (~> 4.1)
+  - KakaoSDK
+  - SnapKit (~> 5.0.0)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
+    - SnapKit
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  KakaoSDK: 16f624b0bb273c9d42eb7a55f6e3cb84552fafab
+  KakaoSDKAuth: 70cfb1e4e60f543fd5f0ece2995c3b0e879c532e
+  KakaoSDKCommon: 48fe293e8970a8db8d10d5ca63600a7a8cc5f74c
+  KakaoSDKLink: 3f4d9b39b6d44d8efc78c4c0e30a6f83ef2e7b51
+  KakaoSDKNavi: ce85b1fad0722bfcd39136d817c5d2985f7c9908
+  KakaoSDKStory: feae12224aef67e79bd023464bc03f7791f97db4
+  KakaoSDKTalk: 61ec48c0fd724191a08dbd94cbd2b913ffbd6cbe
+  KakaoSDKTemplate: 7dd6755ae95c30355922105781dfd5c635348ff2
+  KakaoSDKUser: 5609a2679b6beda86298d63c45961953c7203101
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: 3cfd55f932f619c2ec34501eff85cfb812499307
+
+COCOAPODS: 1.10.2
