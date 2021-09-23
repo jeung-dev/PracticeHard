@@ -48,6 +48,7 @@
 		8CAA923D26F8B8D100E727A6 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA923C26F8B8D100E727A6 /* ImageViewExtension.swift */; };
 		8CAA923F26FB215100E727A6 /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA923E26FB215100E727A6 /* CustomPopup.swift */; };
 		8CAA924126FB3A9300E727A6 /* CustomPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CAA924026FB3A9300E727A6 /* CustomPopupView.xib */; };
+		8CC8C4AA26FC9F6100BAFE42 /* PopupTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8C4A926FC9F6100BAFE42 /* PopupTestViewController.swift */; };
 		C569468D887414A1EE794EB6 /* Pods_Personal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8B40318A3C400202CDF7EC /* Pods_Personal.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		8CAA923C26F8B8D100E727A6 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		8CAA923E26FB215100E727A6 /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		8CAA924026FB3A9300E727A6 /* CustomPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPopupView.xib; sourceTree = "<group>"; };
+		8CC8C4A926FC9F6100BAFE42 /* PopupTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTestViewController.swift; sourceTree = "<group>"; };
 		B3F27F290C519F3210E2EDB0 /* Pods-Personal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Personal.release.xcconfig"; path = "Target Support Files/Pods-Personal/Pods-Personal.release.xcconfig"; sourceTree = "<group>"; };
 		C3CBF91A505A945821318609 /* Pods-Personal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Personal.debug.xcconfig"; path = "Target Support Files/Pods-Personal/Pods-Personal.debug.xcconfig"; sourceTree = "<group>"; };
 		D8CCEA98987B88C587177392 /* Pods_Personal_PersonalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Personal_PersonalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 		8C8C0E7326EA398900F5B3B4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8CC8C4A826FC9F4000BAFE42 /* PopupTest */,
 				8C4EDF0426F62A9900FEA029 /* Main */,
 				8C4EDF0526F62AA300FEA029 /* Sub */,
 				8C8C0E7426EA399500F5B3B4 /* ServiceCell.swift */,
@@ -331,6 +334,14 @@
 				8CAA924026FB3A9300E727A6 /* CustomPopupView.xib */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		8CC8C4A826FC9F4000BAFE42 /* PopupTest */ = {
+			isa = PBXGroup;
+			children = (
+				8CC8C4A926FC9F6100BAFE42 /* PopupTestViewController.swift */,
+			);
+			path = PopupTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C4EDF0E26F79AD400FEA029 /* ViewControllerData.swift in Sources */,
+				8CC8C4AA26FC9F6100BAFE42 /* PopupTestViewController.swift in Sources */,
 				8C4EDF1626F7B1AF00FEA029 /* SubModels.swift in Sources */,
 				8CAA923F26FB215100E727A6 /* CustomPopup.swift in Sources */,
 				8C8C0E8326EA403200F5B3B4 /* ViewExtension.swift in Sources */,
