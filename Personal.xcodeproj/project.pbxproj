@@ -17,6 +17,9 @@
 		8C4EDF1226F79F4100FEA029 /* SubPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDF1126F79F4100FEA029 /* SubPresenter.swift */; };
 		8C4EDF1426F7A12700FEA029 /* SubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDF1326F7A12700FEA029 /* SubRouter.swift */; };
 		8C4EDF1626F7B1AF00FEA029 /* SubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDF1526F7B1AF00FEA029 /* SubModels.swift */; };
+		8C8766CA26FDCCDE007355DE /* ScrollViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766C926FDCCDE007355DE /* ScrollViewTestViewController.swift */; };
+		8C8766CD26FDDB3E007355DE /* PopupTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C8766CC26FDDB3E007355DE /* PopupTestView.xib */; };
+		8C8766D126FE14B1007355DE /* PopupTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766D026FE14B1007355DE /* PopupTestView.swift */; };
 		8C8C0E3026EA33BF00F5B3B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C0E2F26EA33BF00F5B3B4 /* AppDelegate.swift */; };
 		8C8C0E3226EA33BF00F5B3B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C0E3126EA33BF00F5B3B4 /* SceneDelegate.swift */; };
 		8C8C0E3426EA33BF00F5B3B4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C0E3326EA33BF00F5B3B4 /* MainViewController.swift */; };
@@ -84,6 +87,9 @@
 		8C4EDF1126F79F4100FEA029 /* SubPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubPresenter.swift; sourceTree = "<group>"; };
 		8C4EDF1326F7A12700FEA029 /* SubRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRouter.swift; sourceTree = "<group>"; };
 		8C4EDF1526F7B1AF00FEA029 /* SubModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubModels.swift; sourceTree = "<group>"; };
+		8C8766C926FDCCDE007355DE /* ScrollViewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewTestViewController.swift; sourceTree = "<group>"; };
+		8C8766CC26FDDB3E007355DE /* PopupTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTestView.xib; sourceTree = "<group>"; };
+		8C8766D026FE14B1007355DE /* PopupTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTestView.swift; sourceTree = "<group>"; };
 		8C8C0E2C26EA33BF00F5B3B4 /* Personal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Personal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8C0E2F26EA33BF00F5B3B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8C0E3126EA33BF00F5B3B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +215,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8C8766C826FDCCCA007355DE /* EachTest */ = {
+			isa = PBXGroup;
+			children = (
+				8C8766C926FDCCDE007355DE /* ScrollViewTestViewController.swift */,
+			);
+			path = EachTest;
+			sourceTree = "<group>";
+		};
+		8C8766CB26FDDB1F007355DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C8766CC26FDDB3E007355DE /* PopupTestView.xib */,
+				8C8766D026FE14B1007355DE /* PopupTestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8C8C0E2326EA33BF00F5B3B4 = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +330,8 @@
 		8C8C0E7326EA398900F5B3B4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8C8766CB26FDDB1F007355DE /* Views */,
+				8C8766C826FDCCCA007355DE /* EachTest */,
 				8CC8C4A826FC9F4000BAFE42 /* PopupTest */,
 				8C4EDF0426F62A9900FEA029 /* Main */,
 				8C4EDF0526F62AA300FEA029 /* Sub */,
@@ -453,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C8C0E3C26EA33C100F5B3B4 /* LaunchScreen.storyboard in Resources */,
+				8C8766CD26FDDB3E007355DE /* PopupTestView.xib in Resources */,
 				8C8C0E3926EA33C100F5B3B4 /* Assets.xcassets in Resources */,
 				8CAA924126FB3A9300E727A6 /* CustomPopupView.xib in Resources */,
 				8C8C0E3726EA33BF00F5B3B4 /* Main.storyboard in Resources */,
@@ -603,10 +629,12 @@
 				8C8C0E6026EA343900F5B3B4 /* BaseViewController.swift in Sources */,
 				8C8C0E6226EA349200F5B3B4 /* ProgressView.swift in Sources */,
 				8C8C0E6926EA35CA00F5B3B4 /* StrokeColorAnimation.swift in Sources */,
+				8C8766CA26FDCCDE007355DE /* ScrollViewTestViewController.swift in Sources */,
 				8C8C0E8F26EA582A00F5B3B4 /* DataThatNeedMoveServer.swift in Sources */,
 				8C8C0E6E26EA36FA00F5B3B4 /* Logger.swift in Sources */,
 				8C8C0E8826EA40E200F5B3B4 /* NetworkAPI.swift in Sources */,
 				8C4EDF0926F62BC800FEA029 /* MainPresenter.swift in Sources */,
+				8C8766D126FE14B1007355DE /* PopupTestView.swift in Sources */,
 				8C4EDF1226F79F4100FEA029 /* SubPresenter.swift in Sources */,
 				8C8C0E7526EA399500F5B3B4 /* ServiceCell.swift in Sources */,
 				8C8C0E7F26EA3FC700F5B3B4 /* ColorExtension.swift in Sources */,
