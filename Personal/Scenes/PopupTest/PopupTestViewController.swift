@@ -13,6 +13,7 @@ class PopupTestViewController: UIViewController {
     
     let labelOne: UILabel = {
       let label = UILabel()
+        
       label.text = "Scroll Top"
       label.backgroundColor = .red
       label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,141 +38,124 @@ class PopupTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.view.backgroundColor = .yellow
-//
-//        let v1 = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 400))
-//        v1.translatesAutoresizingMaskIntoConstraints = false
-//        v1.backgroundColor = .white
-//        self.view.addSubview(v1)
-//          v1.addSubview(scrollView)
-//
-//        v1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        v1.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-//        v1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-//        v1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-//
-//          scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//          scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-//          scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-//          scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-//
-//          scrollView.addSubview(labelOne)
-//
-//          labelOne.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
-//          labelOne.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
-//
-//          scrollView.addSubview(labelTwo)
-//
-//          labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
-//          labelTwo.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 1000).isActive = true
-//          labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40).isActive = true
-
-        // Do any additional setup after loading the view.
-        
-//        let v1 = PopupView(UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 100)), part: .quitButton)
-//        v1.body.backgroundColor = .red
-//        let v2 = PopupView(UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 200)), part: .title)
-//        v2.body.backgroundColor = .orange
-//        let v3 = PopupView(UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 500)), part: .content)
-//        v3.body.backgroundColor = .yellow
-//        let v4 = PopupView(UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 300)), part: .confirmButton)
-//        v4.body.backgroundColor = .green
-//        let v5 = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-//        v5.backgroundColor = .blue
-//
-//        let combineV = combineT([v1,v2,v3,v4], padding: 10)
-//        self.view.addSubview(combineV)
-        
-        
-        
-        
-//        let view = UIView()
-//        view.backgroundColor = UIColor.yellow
-//        let viewOrder: OrderContent = OrderContent(type: .View, content: view, rect: CGRect(x: 0, y: 0, width: 300, height: 300))
-//
-//        let imageView = UIImageView()
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.image = UIImage(named: "Logo")
-//        imageView.backgroundColor = .blue
-//        let imageViewOrder: OrderContent = OrderContent(type: .ImageView, content: imageView, rect: CGRect(x: 0, y: 0, width: 300, height: 400))
-//
-//        let label = UILabel()
-//        label.backgroundColor = UIColor.red
-//        label.text = "안녕하세요"
-//        let labelOrder: OrderContent = OrderContent(type: .Label, content: label, rect: CGRect(x: 0, y: 0, width: 300, height: 50))
-//
-//
-//
-//        let resultView = getCombineContents(contents: [viewOrder, labelOrder, imageViewOrder])
-//
-//        self.view.addSubview(resultView)
-        
+        /*
+        let dimmedView = getDimmedView()
         let popupView = getPopupView()
         
         setPopupSubViews(popupView)
         
-        self.view.addSubview(popupView)
+        dimmedView.addSubview(popupView)
+        self.view.addSubview(dimmedView)
+ */
+        //ContentView테스트
+        let testView = UIView()
+        testView.backgroundColor = UIColor.yellow
+        let viewOrder: PopupTestViewController.OrderContent = PopupTestViewController.OrderContent(type: .View, content: testView, rect: CGRect(x: 0, y: 0, width: 300, height: 300), isLastContent: true)
+
+        let testImageView = UIImageView()
+        testImageView.contentMode = .scaleAspectFit
+        testImageView.image = UIImage(named: "Logo")
+        testImageView.backgroundColor = .blue
+        let imageViewOrder: PopupTestViewController.OrderContent = PopupTestViewController.OrderContent(type: .ImageView, content: testImageView, rect: CGRect(x: 0, y: 0, width: 300, height: 400), isLastContent: nil)
+
+        let testLabel = UILabel()
+        testLabel.backgroundColor = UIColor.red
+        testLabel.text = "안녕하세요"
+        let labelOrder: PopupTestViewController.OrderContent = PopupTestViewController.OrderContent(type: .Label, content: testLabel, rect: CGRect(x: 0, y: 0, width: 300, height: 50), isLastContent: nil)
+        
+        do {
+            if let contentsView = try getCombineContents(contents: [viewOrder, imageViewOrder, labelOrder]) {
+                self.view.addSubview(contentsView)
+                
+//                contentsView.frame.size.height = 400
+            }
+        } catch {
+            //error .... something
+        }
+        
         
     }
     
+    //MARK: Test 완료
     
     /// popupView의 subView들을 만들고 추가하고 위치시킨다.
     /// - Parameter source: subView를 추가시킬 popupView
     func setPopupSubViews(_ source: UIView) {
         
-        let quitView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        quitView.backgroundColor = .red
+        //get views <- it has false value of a translate... property
+        let quitView = getQuitButton()
+        let titleView = getTitle("타이틀")
+        let contentsView = getContentViewFromNib()
+        let buttonsView = UIView()
+        buttonsView.backgroundColor = .red
+        
+        //add views
+        source.addSubview(quitView)
+        source.addSubview(titleView)
+        source.addSubview(contentsView)
+        source.addSubview(buttonsView)
         
         let leading = (displaySize.width * 0.9) - 30
         var bottom = (displaySize.height * 0.8) - 30
         
-        quitView.translatesAutoresizingMaskIntoConstraints = false
+        //set constraint
+        //height dynamicHeight - quitView.Height - titleView.Height - buttonsViewHeight - safeAreaTop&Bottom
+        let safeAreaGuide = self.view.safeAreaLayoutGuide
         
-        source.addSubview(quitView)
+        self.view.safeAreaLayoutGuide.topAnchor
+        let limitHeight = (self.view.frame.size.height * 0.8) - quitView.frame.size.height - titleView.frame.size.height - buttonsView.frame.size.height - self.view.safeAreaLayoutGuide.topAnchor - self.view.safeAreaLayoutGuide.bottomAnchor
+        if contentsView.frame.size.height > limitHeight {
+            let viewForContentHeight = UIView()
+            viewForContentHeight.frame.size.height = limitHeight
+        }
         
-        quitView.topAnchor.constraint(equalTo: source.topAnchor, constant: 0).isActive = true
-        quitView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: leading).isActive = true
-        quitView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0).isActive = true
-        quitView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -bottom).isActive = true
+        NSLayoutConstraint.activate([
+            //quit view
+            quitView.topAnchor.constraint(equalTo: source.topAnchor, constant: 0),
+            quitView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: leading),
+            quitView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0),
+//            quitView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -bottom),
+            
+            //title view
+            titleView.topAnchor.constraint(equalTo: quitView.bottomAnchor, constant: 0),
+            titleView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0),
+            titleView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0),
+//        titleView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -bottom).isActive = true
+            //contents View
+            contentsView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 0),
+            contentsView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0),
+            contentsView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0),
+            contentsView.heightAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutDimension>#>)
+//            contentsView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -50),
+            //buttonsView
+            buttonsView.topAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: 0),
+            buttonsView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0),
+            buttonsView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0),
+            buttonsView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: 0)
+        ])
         
-        //titleview
-        let titleView = UIView()
-        titleView.backgroundColor = .white
         
-        source.addSubview(titleView)
+        
         
         //height 50
-        bottom -= 50
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.topAnchor.constraint(equalTo: quitView.bottomAnchor, constant: 0).isActive = true
-        titleView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0).isActive = true
-        titleView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0).isActive = true
-        titleView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -bottom).isActive = true
+//        bottom -= 50
         
-        //contentsView
-        let contentsView = UIView()
-        contentsView.backgroundColor = .cyan
+
         
-        source.addSubview(contentsView)
         
-        //height dynamicHeight - quitView.Height - titleView.Height - buttonsViewHeight
-        contentsView.translatesAutoresizingMaskIntoConstraints = false
-        contentsView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 0).isActive = true
-        contentsView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0).isActive = true
-        contentsView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0).isActive = true
-        contentsView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: -50).isActive = true
         
-        //buttonsView
-        let buttonsView = UIView()
-        buttonsView.backgroundColor = .red
         
-        source.addSubview(buttonsView)
         
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsView.topAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: 0).isActive = true
-        buttonsView.leadingAnchor.constraint(equalTo: source.leadingAnchor, constant: 0).isActive = true
-        buttonsView.trailingAnchor.constraint(equalTo: source.trailingAnchor, constant: 0).isActive = true
-        buttonsView.bottomAnchor.constraint(equalTo: source.bottomAnchor, constant: 0).isActive = true
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -199,71 +183,50 @@ class PopupTestViewController: UIViewController {
         return popupView
     }
     
-    func qqq (source: UIView) -> UIView {
-        let v = UIView()
-        v.layer.cornerRadius = 20
-        v.backgroundColor = .brown
-        
-        let quitV = UIView()
-        quitV.backgroundColor = .black
-        let titleView = UIView()
-        titleView.backgroundColor = .yellow
-        let contentView = UIView()
-        contentView.backgroundColor = .red
-        let buttonView = UIView()
-        buttonView.backgroundColor = .orange
-        
-        //translatesAutoresizingMaskIntoConstraints
-        v.translatesAutoresizingMaskIntoConstraints = false
-        quitV.translatesAutoresizingMaskIntoConstraints = false
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //width
-        let dynamicWidth = displaySize.height * 0.9
-        v.frame.size.width = dynamicWidth
-//        v.widthAnchor.constraint(equalTo: source.widthAnchor, multiplier: 40).isActive = true
-        quitV.frame.size.width = 30
-        
-        //height
-        let dynamicHeight = displaySize.height * 0.8
-        let quitVHeight: CGFloat = 30
-        let titleViewHeight: CGFloat = 50
-        let buttonViewHeight: CGFloat = 50
-        let contentViewHeight: CGFloat = (dynamicHeight - (quitVHeight + titleViewHeight + buttonViewHeight))
-        
-        v.frame.size.height = dynamicHeight
-        quitV.frame.size.height = quitVHeight
-        titleView.frame.size.height = titleViewHeight
-        contentView.frame.size.height = contentViewHeight
-        buttonView.frame.size.height = buttonViewHeight
-        
-        //Add
-        v.addSubViews([quitV, titleView, contentView, buttonView])
-        
-        //constraint
-        
-        quitV.topAnchor.constraint(equalTo: v.topAnchor, constant: 0).isActive = true
-        quitV.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 0).isActive = true
-        
-        titleView.topAnchor.constraint(equalTo: quitV.bottomAnchor, constant: 0).isActive = true
-        titleView.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 0).isActive = true
-        titleView.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 0).isActive = true
-        
-        contentView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 0).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 0).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 0).isActive = true
-        
-        buttonView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        buttonView.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 0).isActive = true
-        buttonView.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 0).isActive = true
-        buttonView.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
-        
-        
-        return v
+    
+    /// DimmedView를 리턴하는 메서드
+    /// - Returns: DimmedView
+    func getDimmedView() -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: displaySize.width, height: displaySize.height))
+        view.backgroundColor = UIColor(named: "systemDimmedBlack")
+        return view
     }
     
+    
+    /// QuitButton을 리턴하는 메서드
+    /// - Returns: QuitButton
+    func getQuitButton() -> UIButton {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(named: "quit"), for: .normal)
+        button.backgroundColor = UIColor.red    //실제 사용할 때는 삭제
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
+    
+    
+    /// TitleLabel을 리턴하는 메서드
+    /// - Parameter text: Title 문구
+    /// - Returns: Title Label
+    func getTitle(_ text: String) -> UILabel {
+        let label = UILabel()
+        let attributes: [NSAttributedString.Key : Any] = [.font : UIFont.boldSystemFont(ofSize: 20)]
+        label.attributedText = NSAttributedString(string: text, attributes: attributes)
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+    
+    
+    func getContentViewFromNib() -> UIView {
+        let view = PopupTestView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    //MARK: Test 미완료
     
     //MARK: Combine All Views
     //여러 뷰를 합치는 메서드
@@ -315,8 +278,6 @@ class PopupTestViewController: UIViewController {
             //OK
         //그리고 컨텐츠 뷰를 만드는 곳에서 스크롤이 들어가게 하면 된다.
             //MARK: TODO
-        
-        
 
         return backV
     }
@@ -331,16 +292,21 @@ class PopupTestViewController: UIViewController {
 
     enum CustomError: Error {
         case contentViewIsNotRight
+        case contentNil
+        case lastContentNil
+        case lastContentTooMany
     }
 
     struct OrderContent {
         var type: ContentType?
         var content: Any?
         var rect: CGRect?
-        init(type t: ContentType, content c: Any, rect r: CGRect) {
+        var isLastContent: Bool?
+        init(type t: ContentType, content c: Any, rect r: CGRect, isLastContent: Bool?) {
             self.type = t
             self.content = c
             self.rect = r
+            self.isLastContent = isLastContent ?? false
         }
     }
     
@@ -348,31 +314,57 @@ class PopupTestViewController: UIViewController {
     //컨텐츠뷰는 스크롤되어야 한다.
     //컨텐츠뷰는 특정 높이 이상이 될 수 없다.
     //이 높이는 고정되어 있지 않다. 추후 뷰를 합칠 때 달라 질 수 있다.
-    func getCombineContents(contents: [OrderContent]?) -> UIView {
+    func getCombineContents(contents: [PopupTestViewController.OrderContent]?) throws -> UIView? {
         
-        let viewWidth = UIScreen.main.bounds.width * 0.9
-        var height: CGFloat = 0
-    //        CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 0, height: 0))
-        let contentView = UIView()
-    //    contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        //컨텐츠의 종류에 따라 view에서의 위치가 다름
-        //같은 종류의 컨텐츠가 여러개 들어왔을 경우도 생각해야 함
-        //컨텐츠가 아애 없을 수도 있음
-        
+        /**
+         1. 유효성검사
+         */
         //컨텐츠가 있는지 확인
-        guard let _contents = contents else {
+        guard let _contents = contents, _contents.count > 0 else {
             //없으면 초기설정만 한 view 리턴
-            contentView.addSubview(scrollView)
-            
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-//            contentView.frame.size.width = viewWidth
-//            contentView.frame.size.height = height
-            return contentView
+            throw CustomError.contentNil
+            return nil
         }
+        
+        //마지막 컨텐츠를 등록하지 않으면 스크롤뷰가 망가질 수 있으므로 리턴
+        //마지막 컨텐츠가 2개 이상이어도 리턴
+        var lastContent = false
+        var lastContentCount = 0
+        for content in _contents {
+            if true == content.isLastContent {
+                lastContent = true
+                lastContentCount += 1
+            }
+        }
+        
+        guard lastContent == true else {
+            throw CustomError.lastContentNil
+        }
+        
+        guard lastContentCount == 1 else {
+            throw CustomError.lastContentTooMany
+        }
+        
+        /**
+         2. ScrollView 추가 후 Anchor 조절
+         */
+        //view에 먼저 scrollView를 넣기
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: displaySize.width * 0.9, height: 300))
+        contentView.addSubview(scrollView)
+        
+        
+        //scrollView를 contentView에 맞추기
+        scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        
+        /**
+         3. contents를 Add -> ScrollView
+         - 컨텐츠의 종류에 따라 view에서의 위치가 다름
+         - 같은 종류의 컨텐츠가 여러개 들어왔을 경우도 생각해야 함
+         - 컨텐츠가 아애 없을 수도 있음
+         */
         
         //컨텐츠의 종류에 따라 순서에 맞춰 view에 추가
         let viewOrders = _contents.filter { content in
@@ -397,7 +389,7 @@ class PopupTestViewController: UIViewController {
             }
             return ivs
         }()
-        scrollView.addSubViews(imageViews)
+//        scrollView.addSubViews(imageViews)
         
         let labelOrders = _contents.filter { content in
             return content.type == .Label
@@ -409,48 +401,198 @@ class PopupTestViewController: UIViewController {
             }
             return ls
         }()
-        scrollView.addSubViews(labels)
+//        scrollView.addSubViews(labels)
         
-        //Contraint 지정
-        //SnapKit 사용하지 않고 하기
+        /**
+         4.Anchor 조정
+         - view
+         - image
+         - label
+         */
+        
+        let width = UIScreen.main.bounds.width * 0.9
+        var height: CGFloat = 0
+        var preView: UIView = scrollView
+        var count = 0
         for viewOrder in viewOrders {
-            height = makeConstraint(sourceWidth: viewWidth, order: viewOrder, yPoint: height + 5)
+            let view = viewOrder.content as! UIView
+            height = viewOrder.rect?.height ?? 0
+            view.frame = CGRect(x: viewOrder.rect?.origin.x ?? 0, y: viewOrder.rect?.origin.y ?? 0, width: viewOrder.rect?.size.width ?? 0, height: viewOrder.rect?.size.height ?? 0)
+            
+            view.translatesAutoresizingMaskIntoConstraints = false
+//            view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+//            view.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 1000).isActive = true
+//            view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40).isActive = true
+            view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+            view.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
+            
+//            let label = UILabel()
+
+            let label = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//            label.text = "Scroll Top"
+              label.backgroundColor = .red
+            scrollView.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            
+            label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+            label.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 1000).isActive = true
+            label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40).isActive = true
+            
+//            label.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5)
+//            label.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 2.0)
+//
+//            view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+//            view.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 1000).isActive = true
+//            view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40).isActive = true
+            
+////            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+            
+            
+            //Last View인지 먼저 체크 -- scrollView의 바닥을 짚어야 함
+//            if true == viewOrder.isLastContent {
+//
+//                if count == 0 {
+//                    view.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+//                    view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+//                    view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+//                    view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+//
+//                    preView = view
+//                    count += 1
+//                } else {
+//                    view.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+//                    view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+//                    view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+//                    view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+//
+//                    preView = view
+//                    count += 1
+//                }
+//
+//            } else {
+//                //First View인지 체크 -- scrollView의 topAnchor에 붙여야 함
+//                if count == 0 {
+//                    view.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+//                    view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+//                    view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+//
+//                    preView = view
+//                    count += 1
+//
+//                } else {
+//                    view.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+//                    view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+//                    view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+//
+//                    preView = view
+//                    count += 1
+//                }
+//            }
+            
         }
+        /*
         
         for imgViewOrder in imageViewOrders {
-            height = makeConstraint(sourceWidth: viewWidth, order: imgViewOrder, yPoint: height + 5)
+            let imgView = imgViewOrder.content as! UIImageView
+            height = imgViewOrder.rect?.height ?? 0
+            imgView.translatesAutoresizingMaskIntoConstraints = false
+            //Last View인지 먼저 체크 -- scrollView의 바닥을 짚어야 함
+            if true == imgViewOrder.isLastContent {
+                if count == 0 {
+                    imgView.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+                    imgView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    imgView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    imgView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+                    
+                    preView = imgView
+                    count += 1
+                } else {
+                    imgView.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+                    imgView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    imgView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    imgView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+                    
+                    preView = imgView
+                    count += 1
+                }
+                
+            } else {
+                //First View인지 체크 -- scrollView의 topAnchor에 붙여야 함
+                if count == 0 {
+                    imgView.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+                    imgView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    imgView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    
+                    preView = imgView
+                    count += 1
+                    
+                } else {
+                    imgView.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+                    imgView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    imgView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    
+                    preView = imgView
+                    count += 1
+                }
+            }
+            
         }
         
         for labelOrder in labelOrders {
-            height = makeConstraint(sourceWidth: viewWidth, order: labelOrder, yPoint: height + 5)
+            let label = labelOrder.content as! UILabel
+            height = labelOrder.rect?.height ?? 0
+            label.translatesAutoresizingMaskIntoConstraints = false
+            //Last View인지 먼저 체크 -- scrollView의 바닥을 짚어야 함
+            if true == labelOrder.isLastContent {
+                if count == 0 {
+                    label.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+                    label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+                    
+                    preView = label
+                    count += 1
+                } else {
+                    label.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+                    label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
+                    
+                    preView = label
+                    count += 1
+                }
+                
+            } else {
+                //First View인지 체크 -- scrollView의 topAnchor에 붙여야 함
+                if count == 0 {
+                    label.topAnchor.constraint(equalTo: preView.topAnchor, constant: 0).isActive = true
+                    label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    
+                    preView = label
+                    count += 1
+                    
+                } else {
+                    label.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 0).isActive = true
+                    label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+                    label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+                    
+                    preView = label
+                    count += 1
+                }
+            }
         }
         
-        //content의 크기에 따라 view의 height정함
-        contentView.addSubview(scrollView)
-        let someHeight: CGFloat = 400
-        if height > someHeight {
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-//            scrollView.frame.size.width = viewWidth
-//            scrollView.frame.size.height = someHeight
-            contentView.frame.size.width = viewWidth
-            contentView.frame.size.height = someHeight
-        } else {
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-//            scrollView.frame.size.width = viewWidth
-//            scrollView.frame.size.height = someHeight
-            contentView.frame.size.width = viewWidth
-            contentView.frame.size.height = someHeight
-        }
-        
-        
-        
-        //각 종류별로 크기 변경
+        /**
+         5. Content의 높이를 정함.
+         - 특정 높이 이상 되었을 때 고정하는 것은 팝업뷰를 만들 때 하는 게 좋을 듯.
+         */
+ */
+        Logger.d("height: \(height)")
+        Logger.d("subViews: \(scrollView.subviews.debugDescription)")
+        contentView.frame = CGRect(x: 0, y: 0, width: displaySize.width * 0.9, height: height)
+        contentView.center = self.view.center
+        contentView.frame.size.height = height
         return contentView
     }
     
@@ -458,16 +600,20 @@ class PopupTestViewController: UIViewController {
     //content의 width가 있다고 가정
     //content의 height가 있다고 가정
     //endPoint를 return함
-    func makeConstraint(sourceWidth: CGFloat, order: OrderContent, yPoint y: CGFloat) -> CGFloat{
+    func makeConstraint(_ source: UIView, order: OrderContent, yPoint y: CGFloat) -> CGFloat{
         guard let width = order.rect?.width, let height = order.rect?.height else {
             return y
         }
         
-        let leading = (sourceWidth - width) / 2
+        let leading = ((displaySize.width * 0.9) - width) / 2
         
         switch order.type {
         case .ImageView:
             let imgView = order.content as! UIImageView
+            //source = contentView
+            imgView.translatesAutoresizingMaskIntoConstraints = false
+            imgView.topAnchor.constraint(equalTo: source.topAnchor, constant: 0).isActive = true
+            
             imgView.frame.origin.y = y
             imgView.frame.origin.x = leading
             imgView.frame.size.width = width
